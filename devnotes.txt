@@ -1,0 +1,60 @@
+Build a Code Igniter PHP App
+
+1. config/config.php
+$config['base_url'] = 'http://localhost/ciblog';
+
+2. config/config.php
+$config['index_page'] = '';
+
+3. root folder (ngang voi application)
+.htaccess
+paste cai hien tai
+
+4. Tao controllers (vd nhu Pages.php)
+
+5. Tao views (vd nhu pages/about.php)
+
+6. Go to localhost/ciblog/pages/view/about(pages la class extends CI controllers, view la function trong class do, about chinh la param pass cho view function)
+
+7. config/routes.php
+$route['(:any)'] = 'pages/view/$1' (Khi toi bat ki page nao, se goi pages controller, view function, pass in $1 parameter-representing anything)
+
+8. config/routes/php
+$route['default_controller'] = 'pages/view'; (De k ve trang mac dinh Welcome cua CodeIgniter nua)
+
+9. Nho tao pages/home.php trong views
+
+10. Navbar neu can link thi dung base_url(). Nho vao config/autoload.php:
+$autoload['helper'] = array('url');
+
+11. Lap lai, them controllers, them views,
+
+12. config/routes.php
+$route['post'] = 'posts/index'; (tuc la neu url toi /posts thi se goi controller Posts, function index)
+
+13. Tao database trong localhost/phpmyadmin
+Vi du database ciblog/table posts
+
+14. models/tao file Post_model.php
+Viet nhu trong file
+
+15. Toi Posts.php controller
+$data['posts'] = $this->post_model->get_posts() (post_model la file Post_model vua tao, get_posts la function trong do de interact voi db)
+
+16. Can phai load Model:
+So go to config/autoload.php
+$autoload['model'] = array('post_model') (post_model la file vua tao)
+
+17. config/database.php
+username root
+password legolas136
+database ciblog
+
+18. Form Helper?
+config/autoload.php
+$autoload['helper'] = array('url', 'form')
+
+Git push after each video, so if you want to trace back, see each push log
+
+First video, git init at around 20:00? So changes made before that were not recorded in git, can watch video again.
+Second video, git push at 4:38. Oops. Shoulda pushed at the end of first video.

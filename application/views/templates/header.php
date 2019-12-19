@@ -8,7 +8,8 @@
   <title>ciBlog</title>
   <!--Bootstrap CSS-->
   <link href="https://bootswatch.com/4/cosmo/bootstrap.min.css" rel="stylesheet">
-
+  <!--Own CSS-->
+  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.css">
 </head>
 
 <body>
