@@ -12,5 +12,9 @@
       <a class="nav-link" href="<?php echo base_url() ?>about">About</a>
     </li>
   </ul>
-
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url() ?>posts/create">Create Post</a>
+    </li>
+  </ul>
 </nav>

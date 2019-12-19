@@ -54,6 +54,10 @@ database ciblog
 config/autoload.php
 $autoload['helper'] = array('url', 'form')
 
+19. Form validation
+config/autoload.php
+$autoload['libraries'] = array('form_validation')
+
 Git push after each video, so if you want to trace back, see each push log
 
 First video, git init at around 20:00? So changes made before that were not recorded in git, can watch video again.
