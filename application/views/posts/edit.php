@@ -16,5 +16,15 @@
 <div class="form-group">
   <input type="hidden" name="update_id" value="<?= $post['id'] ?>">
 </div>
+<div class="form-group">
+  <label for="category_id">Category</label>
+  <select name="category_id" id="category_id" class="form-control">
+    <?php foreach ($categories as $category) : ?>
+      <option value="<?= $category['id'] ?>">
+        <?= $category['name'] ?>
+      </option>
+    <?php endforeach ?>
+  </select>
+</div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>

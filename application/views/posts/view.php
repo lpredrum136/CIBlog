@@ -1,4 +1,6 @@
 <h2><?= $post['title'] ?></h2>
+<img src="<?= site_url('assets/images/posts/' . $post['post_image']) ?>" alt="">
+
 <div class="post-body">
   <?= $post['body'] ?>
   <small class="post-date">Posted on: <?= $post['created_at'] ?></small>

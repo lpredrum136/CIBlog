@@ -30,6 +30,8 @@ class Posts extends CI_Controller
   {
     $data['title'] = 'Create Post';
 
+    $data['categories'] = $this->post_model->get_categories();
+
     // Create rules for validation form when it is submitted
     $this->form_validation->set_rules('title', 'Title', 'required');
     $this->form_validation->set_rules('body', 'Body', 'required');
@@ -40,7 +42,24 @@ class Posts extends CI_Controller
       $this->load->view('posts/create', $data);
       $this->load->view('templates/footer');
     } else {
-      $this->post_model->create_post();
+      // Upload Image
+      $config['upload_path'] = './assets/images/posts';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size'] = '2048';
+      $config['max_width'] = '500';
+      $config['max_height'] = '500';
+
+      $this->load->library('upload', $config);
+
+      if (!$this->upload->do_upload()) { // If not uploaded
+        $errors = ['error' => $this->upload->display_errors()];
+        $post_image = 'noimage.jpg';
+      } else {
+        $data = ['upload_data' => $this->upload->data()];
+        $post_image = $_FILES['userfile']['name']; // postimage is the name of the HTML field to input image
+      }
+
+      $this->post_model->create_post($post_image);
       redirect('posts');
     }
   }
@@ -55,6 +74,7 @@ class Posts extends CI_Controller
   public function edit($edit_id)
   {
     $data['post'] = $this->post_model->get_post_by_id($edit_id);
+    $data['categories'] = $this->post_model->get_categories();
 
     // Check if form is submitted. If not, render the view
     $this->load->view('templates/header');

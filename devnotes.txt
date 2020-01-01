@@ -58,6 +58,12 @@ $autoload['helper'] = array('url', 'form')
 config/autoload.php
 $autoload['libraries'] = array('form_validation')
 
+20. config/autoload.php to Truncate text
+$autoload['helper'] = array('url', 'form', 'text')
+
+21. Upload files?
+form_open_multipart
+
 Git push after each video, so if you want to trace back, see each push log
 
 First video, git init at around 20:00? So changes made before that were not recorded in git, can watch video again.
