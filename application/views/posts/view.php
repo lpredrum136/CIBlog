@@ -1,4 +1,8 @@
 <h2><?= $post['title'] ?></h2>
+<span class="badge badge-secondary">
+  <?= $post['name'] ?>
+</span>
+<br>
 <img src="<?= site_url('assets/images/posts/' . $post['post_image']) ?>" alt="">
 
 <div class="post-body">

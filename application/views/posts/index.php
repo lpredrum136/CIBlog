@@ -15,7 +15,7 @@
       <?= word_limiter($post['body'], 60) ?><br>
 
       <p>
-        <a href="<?php echo site_url('/posts/' . $post['slug']) ?>" class="btn btn-info">Read More</a>
+        <a href="<?php echo site_url('posts/' . $post['slug']) ?>" class="btn btn-info">Read More</a>
       </p>
     </div>
   </div>

@@ -15,6 +15,7 @@ class Post_model extends CI_Model
       return $query->result_array();
     }
 
+    $this->db->join('categories', 'categories.id = posts.category_id');
     $query = $this->db->get_where('posts', ['slug' => $slug]);
     return $query->row_array();
   }

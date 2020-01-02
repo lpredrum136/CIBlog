@@ -64,6 +64,10 @@ $autoload['helper'] = array('url', 'form', 'text')
 21. Upload files?
 form_open_multipart
 
+22. New model?
+So go to config/autoload.php
+$autoload['model'] = array('post_model', 'category_model') (category_model la model vua tao)
+
 Git push after each video, so if you want to trace back, see each push log
 
 First video, git init at around 20:00? So changes made before that were not recorded in git, can watch video again.
