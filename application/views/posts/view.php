@@ -21,3 +21,45 @@
     </form>
   </div>
 </div>
+<hr>
+
+<h3>Add Comment</h3>
+<?= validation_errors() ?>
+<?= form_open('comments/create/' . $post['id']) ?>
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" class="form-control">
+</div>
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="text" name="email" id="email" class="form-control">
+</div>
+<div class="form-group">
+  <label for="body">Body</label>
+  <textarea class="form-control" placeholder="Comment body..." name="body" id="body"></textarea>
+</div>
+<input type="hidden" name="slug" value="<?= $post['slug'] ?>">
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<hr>
+
+<h3>Comments</h3>
+<?php if (count($comments) > 0) : ?>
+  <?php foreach ($comments as $comment) : ?>
+    <div class="card my-2 bg-light">
+      <div class="card-body">
+        <h5>
+          <?= $comment['body'] ?>
+          [by <strong><?= $comment['name'] ?></strong>]
+          at <?= $comment['email'] ?>
+          on <?= $comment['created_at'] ?>
+        </h5>
+      </div>
+
+    </div>
+
+  <?php endforeach ?>
+<?php else : ?>
+  No comments
+<?php endif ?>

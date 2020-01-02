@@ -15,6 +15,11 @@ class Post_model extends CI_Model
       return $query->result_array();
     }
 
+    // Have to select first. Otherwise, the categories.id and posts.id have the same field title.
+    // Which causes only categories.id to be returned.
+    // In this fix, categories.id will be returned as base_category_id
+    // So basically, whatever has the same name but be specified, e.g. posts.id, categories.id, and change one of them with 'AS something'
+    $this->db->select('posts.id, category_id, title, slug, body, post_image, posts.created_at, categories.id AS base_category_id, name');
     $this->db->join('categories', 'categories.id = posts.category_id');
     $query = $this->db->get_where('posts', ['slug' => $slug]);
     return $query->row_array();

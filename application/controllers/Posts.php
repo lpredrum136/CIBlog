@@ -19,7 +19,9 @@ class Posts extends CI_Controller
 
     if (empty($data['post'])) show_404();
 
-    // $data['title'] = $data['post']['title'];
+    // Get comments for this post
+    $post_id = $data['post']['id'];
+    $data['comments'] = $this->comment_model->get_comments($post_id);
 
     $this->load->view('templates/header');
     $this->load->view('posts/view', $data);
