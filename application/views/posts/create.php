@@ -26,7 +26,7 @@
   </div>
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?= form_close() ?>
 
 <script>
   // Add the following code if you want the name of the file appear on select

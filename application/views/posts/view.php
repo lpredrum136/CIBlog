@@ -18,7 +18,7 @@
   <div class="col">
     <?= form_open('posts/delete/' . $post['id']) ?>
     <input type="submit" value="Delete" class="btn btn-danger float-right">
-    </form>
+    <?= form_close() ?>
   </div>
 </div>
 <hr>
@@ -32,7 +32,7 @@
 </div>
 <div class="form-group">
   <label for="email">Email</label>
-  <input type="text" name="email" id="email" class="form-control">
+  <input type="email" name="email" id="email" class="form-control">
 </div>
 <div class="form-group">
   <label for="body">Body</label>
@@ -40,7 +40,7 @@
 </div>
 <input type="hidden" name="slug" value="<?= $post['slug'] ?>">
 <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?= form_close() ?>
 
 <hr>
 

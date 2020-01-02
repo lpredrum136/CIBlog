@@ -22,3 +22,38 @@
 <body>
   <?php include 'navbar.php' ?>
   <div class="container">
+    <!--Flash messages-->
+    <?php if ($this->session->flashdata('user_registered')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('user_registered') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('post_created')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('post_created') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('post_updated')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('post_updated') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('category_created')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('category_created') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('post_deleted')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('post_deleted') ?>
+      </div>
+    <?php endif ?>

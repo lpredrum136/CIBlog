@@ -8,4 +8,4 @@
   <input type="text" name="name" id="name" class="form-control" placeholder="Enter name">
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?= form_close() ?>

@@ -22,5 +22,8 @@
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url() ?>posts/create">Create Post</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url() ?>users/register">Register</a>
+    </li>
   </ul>
 </nav>
