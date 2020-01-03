@@ -4,3 +4,21 @@
   margin: 3px 0;
   display: block;
 }
+
+.pagination-link {
+  margin: 30px 0;
+}
+
+a.pagination-link {
+  padding: 8px 13px;
+  margin: 5px;
+  background: lightgray;
+  border: 1px lightgray solid;
+}
+
+.pagination-link strong {
+  padding: 8px 13px;
+  margin: 5px;
+  background: lightgray;
+  border: 1px lightgray solid;
+}

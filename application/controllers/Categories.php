@@ -35,6 +35,20 @@ class Categories extends CI_Controller
     }
   }
 
+  public function delete($delete_id)
+  {
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
+
+    # echo $delete_id;
+    $this->category_model->delete_category($delete_id);
+
+    // Set message
+    $this->session->set_flashdata('category_deleted', 'Your category has been deleted');
+
+    redirect('categories');
+  }
+
   public function posts($id = NULL)
   {
     $data['category_posts'] = $this->category_model->get_categories($id);

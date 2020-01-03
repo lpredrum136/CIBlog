@@ -23,7 +23,17 @@ class Category_model extends CI_Model
 
   public function create_category()
   {
-    $data = ['name' => $this->input->post('name')];
+    $data = [
+      'name' => $this->input->post('name'),
+      'user_id' => $this->session->userdata('user_id')
+    ];
     return $this->db->insert('categories', $data);
+  }
+
+  public function delete_category($delete_id)
+  {
+    $this->db->where('id', $delete_id);
+    $this->db->delete('categories');
+    return true;
   }
 }

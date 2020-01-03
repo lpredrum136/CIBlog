@@ -84,6 +84,13 @@ See controllers/posts or categories.
 26. Check username/email already exists
 See controllers/users/register
 
+27. Login, authentication, access control, protected routes
+
+28. Pagination: Limit number of posts per page
+autoload.php:
+$autoload['libraries'] = array('form_validation', 'session', 'pagination');
+
+
 Git push after each video, so if you want to trace back, see each push log
 
 First video, git init at around 20:00? So changes made before that were not recorded in git, can watch video again.

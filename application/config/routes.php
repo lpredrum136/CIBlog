@@ -49,6 +49,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+/* It goes from top down so put specific routes first before general routes with (:any) */
+$route['posts/index'] = 'posts/index';
 $route['posts/create'] = 'posts/create';
 $route['posts/update'] = 'posts/update';
 $route['posts/(:any)'] = 'posts/view/$1';

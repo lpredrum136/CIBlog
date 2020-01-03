@@ -2,11 +2,21 @@
 
 class Posts extends CI_Controller
 {
-  public function index()
+  public function index($offset = 0)
   {
+    // Pagination: Limit number of posts per page
+    $config['base_url'] = base_url() . 'posts/index/';
+    $config['total_rows'] = $this->db->count_all('posts');
+    $config['per_page'] = 3;
+    $config['uri_segment'] = 3; # /post/index/4 for example, so number 4 is the "3"rd param, that's why we use 3
+    $config['attributes'] = ['class' => 'pagination-link']; # make it look nicer
+
+    // Init pagination
+    $this->pagination->initialize($config);
+
     $data['title'] = 'Latest Posts';
 
-    $data['posts'] = $this->post_model->get_posts();
+    $data['posts'] = $this->post_model->get_posts(FALSE, $config['per_page'], $offset);
 
     $this->load->view('templates/header');
     $this->load->view('posts/index', $data);

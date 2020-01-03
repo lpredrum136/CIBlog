@@ -78,3 +78,10 @@
         <?= $this->session->flashdata('user_logged_out') ?>
       </div>
     <?php endif ?>
+
+    <?php if ($this->session->flashdata('category_deleted')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('category_deleted') ?>
+      </div>
+    <?php endif ?>
