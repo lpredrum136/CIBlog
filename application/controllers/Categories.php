@@ -14,6 +14,9 @@ class Categories extends CI_Controller
 
   public function create()
   {
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
+
     $data['title'] = 'Create Category';
 
     // Create rules for validation form when it is submitted

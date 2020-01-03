@@ -59,6 +59,8 @@ $route['categories'] = 'categories/index';
 $route['categories/posts/(:any)'] = 'categories/posts/$1';
 
 $route['users/register'] = 'users/register';
+$route['users/login'] = 'users/login';
+$route['users/logout'] = 'users/logout';
 
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1';

@@ -30,6 +30,9 @@ class Posts extends CI_Controller
 
   public function create()
   {
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
+
     $data['title'] = 'Create Post';
 
     $data['categories'] = $this->post_model->get_categories();
@@ -72,7 +75,10 @@ class Posts extends CI_Controller
 
   public function delete($delete_id)
   {
-    // echo $delete_id;
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
+
+    # echo $delete_id;
     $this->post_model->delete_post($delete_id);
 
     // Set message
@@ -83,17 +89,28 @@ class Posts extends CI_Controller
 
   public function edit($edit_id)
   {
-    $data['post'] = $this->post_model->get_post_by_id($edit_id);
-    $data['categories'] = $this->post_model->get_categories();
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
 
-    // Check if form is submitted. If not, render the view
-    $this->load->view('templates/header');
-    $this->load->view('posts/edit', $data);
-    $this->load->view('templates/footer');
+    $data['post'] = $this->post_model->get_post_by_id($edit_id);
+
+    if (empty($data['post'])) show_404();
+    else if ($this->session->userdata('user_id') != $data['post']['user_id']) redirect('posts'); // Check if user authenticated to edit
+    else {
+      $data['categories'] = $this->post_model->get_categories();
+
+      // Check if form is submitted. If not, render the view
+      $this->load->view('templates/header');
+      $this->load->view('posts/edit', $data);
+      $this->load->view('templates/footer');
+    }
   }
 
   public function update()
   {
+    // Check if user logged in
+    if (!$this->session->has_userdata('logged_in')) redirect('users/login');
+
     $this->post_model->update_post();
 
     // Set message

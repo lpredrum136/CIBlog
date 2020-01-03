@@ -57,3 +57,24 @@
         <?= $this->session->flashdata('post_deleted') ?>
       </div>
     <?php endif ?>
+
+    <?php if ($this->session->flashdata('user_successful_logged_in')) : ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('user_successful_logged_in') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('user_unsuccessful_logged_in')) : ?>
+      <div class="alert alert-danger">
+        <strong>Login fails!</strong>
+        <?= $this->session->flashdata('user_unsuccessful_logged_in') ?>
+      </div>
+    <?php endif ?>
+
+    <?php if ($this->session->flashdata('user_logged_out')) : ?>
+      <div class="alert alert-info">
+        <strong>Success!</strong>
+        <?= $this->session->flashdata('user_logged_out') ?>
+      </div>
+    <?php endif ?>

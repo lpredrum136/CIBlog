@@ -11,17 +11,19 @@
 </div>
 
 <hr>
-<div class="row">
-  <div class="col">
-    <a href="<?= base_url() ?>posts/edit/<?= $post['id'] ?>" class="btn btn-info">Edit</a>
+<?php if ($post['user_id'] == $this->session->userdata('user_id')) : ?>
+  <div class="row">
+    <div class="col">
+      <a href="<?= base_url() ?>posts/edit/<?= $post['id'] ?>" class="btn btn-info">Edit</a>
+    </div>
+    <div class="col">
+      <?= form_open('posts/delete/' . $post['id']) ?>
+      <input type="submit" value="Delete" class="btn btn-danger float-right">
+      <?= form_close() ?>
+    </div>
   </div>
-  <div class="col">
-    <?= form_open('posts/delete/' . $post['id']) ?>
-    <input type="submit" value="Delete" class="btn btn-danger float-right">
-    <?= form_close() ?>
-  </div>
-</div>
-<hr>
+  <hr>
+<?php endif ?>
 
 <h3>Add Comment</h3>
 <?= validation_errors() ?>
