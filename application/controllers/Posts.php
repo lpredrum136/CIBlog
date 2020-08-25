@@ -1,5 +1,10 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+
 class Posts extends CI_Controller
 {
   public function index($offset = 0)
@@ -66,6 +71,7 @@ class Posts extends CI_Controller
 
       $this->load->library('upload', $config);
 
+      $post_image = null;
       if (!$this->upload->do_upload()) { // If not uploaded
         $errors = ['error' => $this->upload->display_errors()];
         $post_image = 'noimage.jpg';
@@ -74,6 +80,24 @@ class Posts extends CI_Controller
         $post_image = $_FILES['userfile']['name']; // postimage is the name of the HTML field to input image
       }
 
+      // Add this image to AWS S3 Bucket
+      $s3 = new S3Client([
+        'version' => 'latest',
+        'region' => 'us-east-2',
+        'credentials' => [
+          'key' => 'AKIAVAZVKNDRNUT6XKGU',
+          'secret' => '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'
+        ]
+      ]);
+
+      // Now we send it to S3 Bucket
+      $result = $s3->putObject([
+        'Bucket' => 'henry-bucket',
+        'Key' => $post_image,
+        'SourceFile' => $_FILES['userfile']['tmp_name']
+      ]);
+
+      // Add into local database
       $this->post_model->create_post($post_image);
 
       // Set message
