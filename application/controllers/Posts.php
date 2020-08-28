@@ -81,12 +81,13 @@ class Posts extends CI_Controller
       }
 
       // Add this image to AWS S3 Bucket
+      $this->load->config('aws');
       $s3 = new S3Client([
         'version' => 'latest',
         'region' => 'us-east-2',
         'credentials' => [
-          'key' => 'AKIAVAZVKNDRNUT6XKGU',
-          'secret' => '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'
+          'key' => config_item('S3_key'),
+          'secret' => config_item('S3_secret')
         ]
       ]);
 
