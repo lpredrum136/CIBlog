@@ -73,7 +73,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
+/* $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
@@ -93,14 +93,14 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+); */
 
-/* $db['default'] = array(
+$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'henry-rds.cvc9gydtumrm.us-east-2.rds.amazonaws.com',
 	'username' => 'admin',
 	'password' => 'legolas136',
-	'database' => 'henry-rds',
+	'database' => 'ciblog',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -115,4 +115,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-); */
+);
