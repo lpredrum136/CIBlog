@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/ciblog';
+$config['base_url'] = ENVIRONMENT == 'development' ? 'http://localhost/ciblog' : 'http://ciblog-env.eba-tz7rdueu.us-east-2.elasticbeanstalk.com/';
 
 /*
 |--------------------------------------------------------------------------
